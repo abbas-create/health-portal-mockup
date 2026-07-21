@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="jsin.js" rel="script">
+         <link href="signup.css" rel="stylesheet">
+        <title>Sign-up Page</title>
+    </head>
+    <body>
+        <img  id="icon" width="9%" src="https://images.seeklogo.com/logo-png/34/1/ministry-of-health-kuwait-logo-png_seeklogo-349788.png">
+        <h1 id="Main-header">SIGN UP</h1>
+        <h2 id="sec-header">Please fill in your information below!!!!</h2>
+            <form action="register.php" method="POST">
+            <div class="Q1-box">
+                <h3 id="h3-1">Enter your full name</h3>
+                <label for="fname">First-Name</label><br>
+                <input id="fname" type="text" name="fname" placeholder="First name" required>
+                <br>
+                <label for="2name">Middle-Name</label><br>
+                <input id="2name" type="text" name="2name" placeholder="Middle name" required>
+                <br>
+                <label for="lname">Last-Name</label><br>
+                <input id="lname" type="text" name="lname" placeholder="Last name" required>
+                </div>
+                <div class="Q2-box">
+                <h3 id="h3-2">Date of Birth</h3>
+                <label for="bDate"></label>
+                <input id="bDate" type="date" name="bDate" required>
+                </div>
+                <div class="Q3-box">
+                <h3 id="h3-3">Civil-ID</h3>
+                <label for="Civil-ID"></label>
+                <input id="Civil-ID" type="text" maxlength="12" placeholder="123456789010" inputmode="numeric" pattern="{0-9}-{11}" required>
+                </div>
+                <div class="Q4-box">
+                <label for="email">Email:<br>
+                        <input id="email" type="email" name="email" required>
+                        </label>
+                        <br>
+                        <label for="Password">Password:<br>
+                            <input  id="password" type="password" name="password" required>
+                    </label>
+                    </div>
+            <div class="terms-and-conditions">
+                <h3 id="h3-4">Terms and Conditions</h3>
+                <p>Terms and Conditions
+By registering, you agree to provide accurate information and keep your account secure.
+ Your data will be used to provide our services and protected according to our privacy rules.
+  Misuse of the account or false information is prohibited.</p>
+  <label for="agree">
+  <input type="radio" id="agree" name="terms" value="agree" required> I agree
+</label><br>
+<label for="disagree">
+  <input type="radio" id="disagree" name="terms" value="disagree" required> I disagree
+</label>
+            </div>
+            <div id="Role">
+                <h3 id="h3-4">Who are you?</h3>
+                <label for="docotr">
+  <input type="radio" id="doctor" name="role" value="doctor" required> Doctor
+</label><br>
+<label for="patient">
+  <input type="radio" id="patient" name="role" value="patient" required> Patient
+</label>
+            </div>
+             <div class="button-box">
+            <button type="submit">Register</button>
+            </div>
+            </form>
+            </body>
+            <script>
+
+        // signup.js - Add this script to your signup.html
+
+document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form values
+    const firstName = document.getElementById('fname').value.trim();
+    const middleName = document.getElementById('2name').value.trim();
+    const lastName = document.getElementById('lname').value.trim();
+    const birthDate = document.getElementById('bDate').value;
+    const civilID = document.querySelector('input[name="Civil-ID"]').value.trim();
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const password = document.querySelector('input[name="password"]').value;
+    
+    // Get role (doctor or patient)
+    const roleElement = document.querySelector('input[name="role"]:checked');
+    if (!roleElement) {
+        alert('Please select whether you are a Doctor or Patient');
+        return;
+    }
+    const role = roleElement.value;
+    
+    // Validate terms
+    const termsAgreed = document.getElementById('agree').checked;
+    if (!termsAgreed) {
+        alert('You must agree to the terms and conditions');
+        return;
+    }
+    
+    // Validate all fields
+    if (!firstName || !lastName || !birthDate || !civilID || !email || !password) {
+        alert('Please fill in all required fields');
+        return;
+    }
+    
+    // Create full name (add "Dr." prefix if doctor)
+    const fullName = role === 'doctor' 
+        ? `Dr. ${firstName} ${middleName} ${lastName}`.trim()
+        : `${firstName} ${middleName} ${lastName}`.trim();
+    
+    // Get existing users or create empty array
+    let users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    
+    // Check if email already exists
+    if (users.find(user => user.email === email)) {
+        alert('This email is already registered!');
+        return;
+    }
+    
+    // Create new user object
+    const newUser = {
+        id: Date.now(), // Unique ID
+        fullName: fullName,
+        firstName: firstName,
+        middleName: middleName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        birthDate: birthDate,
+        civilID: civilID,
+        role: role, // 'doctor' or 'patient'
+        registeredDate: new Date().toISOString()
+    };
+    
+    // Add new user to array
+    users.push(newUser);
+    
+    // Save to localStorage
+    localStorage.setItem('registeredUsers', JSON.stringify(users));
+    
+    alert('Registration successful! You can now log in.');
+    
+    // Redirect to login page
+    window.location.href = 'login.html';
+});
+    </script>
+</body>
+</html>
+                

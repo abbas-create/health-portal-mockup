@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dashboard - Doctor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="dashboard.css" rel="stylesheet">
+    </head>
+    <body>
+        <button id="toggleSidebar">☰ Hide</button>
+        <div id="header">
+            <h1> Patient PORTAL--MOHE--</h1>
+           <img src="logomoh.jpeg" alt="logo">
+        </div>
+        <div id="mainWrapper">
+        <div id="sidebar">
+            <h2>Menus</h2>
+            <ul>
+               <a href="#AI"><li>Chat-buddy</li></a>
+                <a href="#information"><li>Medicine Information</li></a>
+               <a href="#contact"><li>Contact US</li></a> 
+            </ul>
+        </div>
+        <div id="container">
+        <div class="info-box">
+        <div id="middle">
+            <h1><i>Welcome, Patient!</i></h1>
+            <hr>
+            <p><b>Please DO NOT, in any way shape or form, let anyone go to your portal nor giving them acess to your information.</b></p>
+            <br>
+            <p><b>We do not request from you verifiation codes nor do we EVER send SMS(unless its for notifications).</b></p>
+            </div>
+            </div>
+        <hr>
+        <section id="AI">
+            <div id="intro-box">
+                <h1>🤖Welcome to Chat Buddy🤖</h1>
+                <hr>
+                <p><b>Welcome to the AI chatbot created for your patient needs.</b></p>
+                <p><b>While chat buddy is here to assist you on anything, please refrain from asking our chat buddy here weird questions...</b></p>
+            </div>
+             <div class="chat-container">
+                <h2>Medical AI Assistant</h2>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot">
+                        <strong>AI Assistant:</strong> Hello Doctor! I'm your medical AI assistant. How can I help you today? You can ask me about:
+                        <ul style="margin-top: 10px;">
+                            <li>Drug interactions and contraindications</li>
+                            <li>Diagnosis suggestions based on symptoms</li>
+                            <li>Treatment protocols</li>
+                            <li>Medical reference information</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Type your medical question here..." />
+                    <button class="chat-send-btn" onclick="sendMessage()">Send</button>
+                </div>
+        </section>
+        <hr>
+        <section id="information">
+            <div class="information">
+                <div id="box">
+                <h2>⚕️Medicine Information⚕️</h2>
+                <hr>
+                <p><b>Welcome to the medicine information. Here we provide the most common medicines requested by the patients, instead of asking around the hospital or the chat bot, here we lay the information about them, the common dosages, and the important notes. </b></p>
+                </div>
+            </div>
+            <div id="box">
+                <h3>General Prescription Guidelines</h3>
+<p>
+    This section contains basic information and guidelines for writing
+    prescriptions. The purpose of this content is simply to make your
+    page longer so menu scrolling works correctly.
+</p>
+<br>
+<h3>Common Medicines</h3>
+<ul>
+    <li>Paracetamol 500mg – Pain / fever</li>
+    <li>Ibuprofen 200mg – Anti-inflammatory</li>
+    <li>Amoxicillin 500mg – Antibiotic</li>
+    <li>Cetirizine 10mg – Allergy relief</li>
+    <li>Vitamin D – Supplement</li>
+</ul>
+<br>
+<h3>Dosage Examples</h3>
+<p>
+    • 1 tablet every 8 hours<br>
+    • 1 capsule daily after meals<br>
+    • Ointment twice per day<br>
+    • Syrup 10ml every 6 hours<br>
+</p>
+<br>
+<h3>Important Notes</h3>
+<p>
+    - Check patient allergies.<br>
+    - Write medicine names clearly.<br>
+    - Avoid confusing abbreviations.<br>
+    - Ensure dosage & frequency are correct.<br>
+</p>
+<br>
+<p>
+    Prescriptions must be clear and properly documented. Patients should
+    always understand how to use their medication safely.
+</p>
+      </div>
+
+        </section>
+        <hr>
+        <section id="contact">
+            <div id="box-contact" >
+                <h1>📞Want to contact us?📞</h1>
+                <hr>
+                <p><i>Here is the contact us page. Please do not contact the Doctor through this page, this page reserved for IT issues revolving around the portal, as well as maybe for other reasons such as a Lost and Found. Thank you for understanding.</i></p>
+            </div>
+            <div id="contact-us">
+                <label for="Fullname">Fullname</label>
+                <br>
+                <input id="Fullname" name="Fullname" type="text" placeholder="Type your full name here...">
+                <br>
+                <label for="email">Email Adress</label>
+                <br>
+                <input id="email" type="email" name="email" placeholder="Type your email address here...">
+                <br>
+                <label for="problem-area">Whats the issue?</label>
+                <br>
+                <textarea id="problem-area" name="problem-area" rows="4" placeholder="Type your issue here..."></textarea>
+                <br>
+                <button type="submit">Submit</button>
+            </div>
+        </section>
+        </div>
+        </div>
+        <script>
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Your existing scripts (sidebar toggle, etc.)
+            const toggleBtn = document.getElementById('toggleSidebar');
+            const sidebar = document.getElementById('sidebar');
+            
+            toggleBtn.addEventListener('click', function() {
+                sidebar.classList.toggle('hidden');
+                
+                // Change button text based on sidebar state
+                if (sidebar.classList.contains('hidden')) {
+                    toggleBtn.textContent = '☰ Show';
+                } else {
+                    toggleBtn.textContent = '☰ Hide';
+                }
+            });
+
+            function openReasonBox() {
+                document.getElementById("reasonBox").style.display = "block";
+            }
+
+            function submitReason() {
+                const reason = document.getElementById("reasonSelect").value;
+                alert("Reason selected: " + reason);
+            }
+
+            // AI Chatbot - Full Simulated Script (Until API Key is ready)
+// Add this script to your doctor dashboard HTML
+
+// Medical knowledge database for simulated responses
+const medicalKnowledge = {
+    // Common medications
+    medications: {
+        paracetamol: {
+            name: "Paracetamol (Acetaminophen)",
+            dosage: "500-1000mg every 4-6 hours",
+            maxDose: "4000mg per day",
+            uses: "Pain relief and fever reduction",
+            warnings: "Hepatotoxic in overdose. Caution in liver disease and chronic alcohol use.",
+            interactions: "Minimal drug interactions. Safe with most medications."
+        },
+        amoxicillin: {
+            name: "Amoxicillin",
+            dosage: "250-500mg every 8 hours",
+            duration: "7-10 days typically",
+            uses: "Bacterial infections (respiratory, urinary, skin)",
+            warnings: "ALWAYS check for penicillin allergy first! May cause hypersensitivity reactions.",
+            interactions: "May reduce effectiveness of oral contraceptives. Take with food."
+        },
+        metformin: {
+            name: "Metformin",
+            dosage: "Start 500mg twice daily with meals, max 2000mg/day",
+            uses: "Type 2 Diabetes management",
+            warnings: "Risk of lactic acidosis. Monitor renal function. Hold before contrast studies.",
+            interactions: "Avoid alcohol. Caution with other antidiabetic agents."
+        },
+        ibuprofen: {
+            name: "Ibuprofen",
+            dosage: "200-400mg every 4-6 hours, max 1200mg/day (OTC) or 3200mg/day (Rx)",
+            uses: "Pain, inflammation, fever",
+            warnings: "GI bleeding risk. Caution in elderly, renal impairment, cardiovascular disease.",
+            interactions: "Avoid with aspirin, warfarin, other NSAIDs. Take with food."
+        },
+        aspirin: {
+            name: "Aspirin",
+            dosage: "75-100mg daily (cardiovascular), 300-900mg every 4-6 hours (pain)",
+            uses: "Cardiovascular protection, pain relief, anti-inflammatory",
+            warnings: "Bleeding risk. Avoid in children with viral infections (Reye's syndrome).",
+            interactions: "Increases bleeding risk with warfarin, other anticoagulants."
+        },
+        omeprazole: {
+            name: "Omeprazole",
+            dosage: "20-40mg once daily before breakfast",
+            uses: "GERD, peptic ulcers, dyspepsia",
+            warnings: "Long-term use may increase fracture risk and vitamin B12 deficiency.",
+            interactions: "May reduce effectiveness of clopidogrel. Decreases absorption of iron, calcium."
+        },
+        amlodipine: {
+            name: "Amlodipine",
+            dosage: "5-10mg once daily",
+            uses: "Hypertension and angina",
+            warnings: "May cause peripheral edema, especially in elderly.",
+            interactions: "Grapefruit juice may increase levels. Caution with other antihypertensives."
+        },
+        warfarin: {
+            name: "Warfarin",
+            dosage: "Individualized based on INR (target 2-3 for most indications)",
+            uses: "Anticoagulation for DVT/PE, atrial fibrillation, mechanical heart valves",
+            warnings: "NARROW THERAPEUTIC INDEX. Regular INR monitoring essential. Major bleeding risk.",
+            interactions: "MANY interactions! NSAIDs, antibiotics, vitamin K foods affect INR."
+        },
+        atorvastatin: {
+            name: "Atorvastatin",
+            dosage: "10-80mg once daily (evening preferred)",
+            uses: "Cholesterol management, cardiovascular disease prevention",
+            warnings: "Risk of myopathy/rhabdomyolysis. Monitor liver enzymes and CK.",
+            interactions: "Avoid grapefruit juice. Many drug interactions (fibrates, azole antifungals)."
+        },
+        salbutamol: {
+            name: "Salbutamol (Albuterol)",
+            dosage: "100-200mcg inhaled as needed, max 8 puffs/day",
+            uses: "Bronchodilation for asthma, COPD",
+            warnings: "Overuse indicates poor asthma control. May cause tremor, tachycardia.",
+            interactions: "Caution with beta-blockers. Use spacer device for better delivery."
+        }
+    },
+
+    // Common conditions and treatments
+    conditions: {
+        hypertension: "First-line: ACE inhibitors (lisinopril 10-40mg), ARBs (losartan 50-100mg), CCBs (amlodipine 5-10mg), or thiazide diuretics (HCTZ 12.5-25mg). Target BP <140/90 (or <130/80 in diabetes). Lifestyle: weight loss, DASH diet, exercise, limit sodium and alcohol.",
+        diabetes: "Type 2 first-line: Metformin 500mg twice daily, titrate to 2000mg/day. Target HbA1c <7%. Add SGLT2i or GLP-1 agonist if CVD risk. Lifestyle: diet, exercise, weight loss. Monitor for complications (retinopathy, nephropathy, neuropathy).",
+        asthma: "Controller: ICS (fluticasone 100-500mcg twice daily). Reliever: SABA (salbutamol PRN). Assess control regularly. Step up if symptoms >2x/week or nocturnal symptoms. Action plan for exacerbations. Avoid triggers.",
+        gerd: "PPI (omeprazole 20-40mg) for 4-8 weeks. Lifestyle: elevate head of bed, avoid late meals, lose weight, avoid triggers (caffeine, alcohol, spicy foods). Consider H. pylori testing if applicable.",
+        uti: "Uncomplicated: nitrofurantoin 100mg twice daily for 5 days OR trimethoprim 200mg twice daily for 3 days. Complicated or pyelonephritis: ciprofloxacin 500mg twice daily for 7-14 days. Ensure adequate hydration.",
+        pneumonia: "Community-acquired: amoxicillin 500mg three times daily for 5-7 days. Add clarithromycin if atypical suspected. Severe: hospitalization, IV antibiotics. CXR for confirmation.",
+        depression: "First-line SSRI (sertraline 50-200mg, escitalopram 10-20mg). Allow 4-6 weeks for response. Consider psychotherapy. Safety planning if suicidal ideation. Monitor closely initially.",
+        anxiety: "CBT first-line. If medication needed: SSRI (sertraline 50-200mg). Benzodiazepines only short-term due to dependence risk. Breathing exercises, mindfulness techniques.",
+        migraine: "Acute: NSAIDs (ibuprofen 400-600mg), triptans (sumatriptan 50-100mg). Prophylaxis if ≥4 attacks/month: propranolol 40-160mg, topiramate 50-200mg, or amitriptyline 25-75mg.",
+        copd: "LABA/LAMA combination inhaler (e.g., indacaterol/glycopyrronium). SABA PRN for rescue. Smoking cessation critical. Pulmonary rehabilitation. Vaccinations (flu, pneumococcal)."
+    },
+
+    // Drug interactions checker
+    interactions: {
+        "warfarin-nsaid": "⚠️ MAJOR INTERACTION: Increased bleeding risk. Avoid combination if possible. If necessary, monitor INR closely and watch for signs of bleeding.",
+        "warfarin-aspirin": "⚠️ MAJOR INTERACTION: Significantly increased bleeding risk. Use only if clear indication (e.g., mechanical valve + ACS). Close monitoring required.",
+        "metformin-contrast": "⚠️ CAUTION: Hold metformin 48 hours before and after IV contrast to reduce lactic acidosis risk. Check renal function before restarting.",
+        "ace-spironolactone": "⚠️ CAUTION: Risk of hyperkalemia. Monitor potassium levels regularly. Educate patient to avoid potassium supplements.",
+        "statin-fibrate": "⚠️ CAUTION: Increased risk of myopathy/rhabdomyolysis. Avoid gemfibrozil with statins. Fenofibrate safer but still monitor CK.",
+        "ssri-nsaid": "⚠️ CAUTION: Increased GI bleeding risk. Consider PPI co-prescription if both needed.",
+        "omeprazole-clopidogrel": "⚠️ CAUTION: PPI may reduce clopidogrel effectiveness. Use pantoprazole instead if PPI needed.",
+        "amoxicillin-ocp": "⚠️ MINOR: May reduce oral contraceptive effectiveness. Advise additional contraception during antibiotic course and 7 days after."
+    }
+};
+
+// Simulated AI responses with typing delay
+function getSimulatedAIResponse(userMessage) {
+    const msg = userMessage.toLowerCase();
+    
+    // Check for specific medication queries
+    for (const [key, data] of Object.entries(medicalKnowledge.medications)) {
+        if (msg.includes(key)) {
+            return `📋 **${data.name}**\n\n` +
+                   `**Dosage:** ${data.dosage}\n` +
+                   `**Uses:** ${data.uses}\n` +
+                   `**Warnings:** ${data.warnings}\n` +
+                   `**Interactions:** ${data.interactions}\n\n` +
+                   `Would you like to know about drug interactions or alternative medications?`;
+        }
+    }
+
+    // Check for condition queries
+    if (msg.includes('hypertension') || msg.includes('high blood pressure') || msg.includes('bp')) {
+        return `🩺 **Hypertension Management:**\n\n${medicalKnowledge.conditions.hypertension}\n\nWould you like specific medication recommendations?`;
+    }
+    
+    if (msg.includes('diabetes') || msg.includes('diabetic') || msg.includes('blood sugar')) {
+        return `🩺 **Type 2 Diabetes Management:**\n\n${medicalKnowledge.conditions.diabetes}\n\nNeed help with insulin dosing or complications management?`;
+    }
+    
+    if (msg.includes('asthma') || msg.includes('wheezing') || msg.includes('bronchospasm')) {
+        return `🩺 **Asthma Management:**\n\n${medicalKnowledge.conditions.asthma}\n\nWould you like an asthma action plan template?`;
+    }
+    
+    if (msg.includes('gerd') || msg.includes('reflux') || msg.includes('heartburn')) {
+        return `🩺 **GERD Management:**\n\n${medicalKnowledge.conditions.gerd}\n\nNeed help with PPI therapy duration or step-down approach?`;
+    }
+    
+    if (msg.includes('uti') || msg.includes('urinary tract infection') || msg.includes('cystitis')) {
+        return `🩺 **UTI Treatment:**\n\n${medicalKnowledge.conditions.uti}\n\nWould you like guidance on when to order urine culture?`;
+    }
+    
+    if (msg.includes('pneumonia') || msg.includes('chest infection')) {
+        return `🩺 **Pneumonia Treatment:**\n\n${medicalKnowledge.conditions.pneumonia}\n\nNeed CURB-65 score calculator or admission criteria?`;
+    }
+    
+    if (msg.includes('depression') || msg.includes('depressed')) {
+        return `🩺 **Depression Management:**\n\n${medicalKnowledge.conditions.depression}\n\nWould you like PHQ-9 questionnaire or therapy referral guidelines?`;
+    }
+    
+    if (msg.includes('anxiety') || msg.includes('anxious')) {
+        return `🩺 **Anxiety Management:**\n\n${medicalKnowledge.conditions.anxiety}\n\nNeed GAD-7 questionnaire or relaxation technique guidance?`;
+    }
+    
+    if (msg.includes('migraine') || msg.includes('headache')) {
+        return `🩺 **Migraine Management:**\n\n${medicalKnowledge.conditions.migraine}\n\nWould you like headache diary template or red flag symptoms?`;
+    }
+    
+    if (msg.includes('copd') || msg.includes('emphysema') || msg.includes('chronic bronchitis')) {
+        return `🩺 **COPD Management:**\n\n${medicalKnowledge.conditions.copd}\n\nNeed exacerbation management protocol or spirometry interpretation?`;
+    }
+
+    // Drug interaction queries
+    if (msg.includes('interaction')) {
+        if (msg.includes('warfarin') && msg.includes('nsaid')) {
+            return `⚠️ **Drug Interaction Alert:**\n\n${medicalKnowledge.interactions['warfarin-nsaid']}`;
+        }
+        if (msg.includes('warfarin') && msg.includes('aspirin')) {
+            return `⚠️ **Drug Interaction Alert:**\n\n${medicalKnowledge.interactions['warfarin-aspirin']}`;
+        }
+        if (msg.includes('metformin') && msg.includes('contrast')) {
+            return `⚠️ **Drug Interaction Alert:**\n\n${medicalKnowledge.interactions['metformin-contrast']}`;
+        }
+        return `To check drug interactions, please specify the two medications. For example: "warfarin and aspirin interaction" or "metformin and contrast".\n\nCommon concerning interactions:\n• Warfarin + NSAIDs\n• ACE-I + Spironolactone\n• Statins + Fibrates\n• SSRIs + NSAIDs`;
+    }
+
+    // Dosage queries
+    if (msg.includes('dose') || msg.includes('dosage') || msg.includes('how much')) {
+        return `Please specify which medication you need dosage information for. I can provide standard dosing for:\n\n• Paracetamol\n• Amoxicillin\n• Metformin\n• Ibuprofen\n• Aspirin\n• Omeprazole\n• Amlodipine\n• Warfarin\n• Atorvastatin\n• Salbutamol\n\nOr ask about dosing for a specific condition.`;
+    }
+
+    // Side effects queries
+    if (msg.includes('side effect') || msg.includes('adverse')) {
+        return `Common medication side effects:\n\n**NSAIDs:** GI upset, bleeding, renal impairment\n**ACE Inhibitors:** Dry cough, hyperkalemia, angioedema\n**Statins:** Myalgia, elevated liver enzymes, rarely rhabdomyolysis\n**Metformin:** GI upset, lactic acidosis (rare)\n**PPIs:** Increased fracture risk, C. diff infection with long-term use\n\nWhich medication's side effects would you like to discuss in detail?`;
+    }
+
+    // Contraindication queries
+    if (msg.includes('contraindication') || msg.includes('when not to')) {
+        return `Please specify which medication. Common contraindications:\n\n**Metformin:** eGFR <30, metabolic acidosis\n**NSAIDs:** Active GI bleeding, severe heart failure\n**Warfarin:** Active bleeding, pregnancy\n**ACE-I:** Pregnancy, bilateral renal artery stenosis, angioedema history\n**Beta-blockers:** Severe asthma, heart block\n\nWhich drug would you like contraindication details for?`;
+    }
+
+    // Pregnancy/breastfeeding queries
+    if (msg.includes('pregnan') || msg.includes('breastfeed')) {
+        return `**Pregnancy Safety:**\n\n✅ SAFE: Paracetamol, most penicillins, insulin, methyldopa\n⚠️ CAUTION: Many medications - assess benefit vs risk\n❌ AVOID: ACE-I/ARBs, warfarin, statins, most NSAIDs (3rd trimester), valproate\n\n**Breastfeeding:**\n✅ SAFE: Paracetamol, ibuprofen, most antibiotics\n❌ AVOID: Aspirin (high dose), codeine, some antidepressants\n\nWhich specific medication would you like pregnancy/lactation guidance on?`;
+    }
+
+    // Renal dosing queries
+    if (msg.includes('renal') || msg.includes('kidney') || msg.includes('egfr')) {
+        return `**Renal Dose Adjustments:**\n\nMany drugs require adjustment:\n• **Metformin:** Avoid if eGFR <30\n• **NSAIDs:** Use lowest dose, monitor renal function\n• **ACE-I/ARBs:** May initially worsen renal function\n• **Digoxin:** Reduce dose significantly\n• **Antibiotics:** Many need adjustment\n\nWhat's the patient's eGFR and which medication are you considering?`;
+    }
+
+    // Antibiotic queries
+    if (msg.includes('antibiotic')) {
+        return `**Common Antibiotic Choices:**\n\n🦠 **Respiratory:** Amoxicillin 500mg TDS\n🦠 **UTI:** Nitrofurantoin 100mg BD or Trimethoprim 200mg BD\n🦠 **Skin/soft tissue:** Flucloxacillin 500mg QDS\n🦠 **Atypical:** Clarithromycin 500mg BD or Doxycycline 100mg OD\n\n⚠️ Always check local antibiotic guidelines and resistance patterns.\n\nWhich infection type are you treating?`;
+    }
+
+    // Pain management queries
+    if (msg.includes('pain') && !msg.includes('chest')) {
+        return `**Analgesic Ladder:**\n\n**Step 1:** Paracetamol 1g QDS (regular dosing)\n**Step 2:** + NSAID (if not contraindicated)\n**Step 3:** + Weak opioid (codeine 30-60mg, tramadol 50-100mg)\n**Step 4:** Strong opioid (morphine, oxycodone)\n\n**Neuropathic pain:** Gabapentin, pregabalin, amitriptyline, duloxetine\n\nWhat type of pain are you managing?`;
+    }
+
+    // Emergency queries
+    if (msg.includes('emergency') || msg.includes('urgent') || msg.includes('acute')) {
+        return `🚨 **Emergency Management Priorities:**\n\n**ABCDE Approach:**\n• **A**irway - Secure and protect\n• **B**reathing - Oxygen, respiratory support\n• **C**irculation - IV access, fluids, pressors\n• **D**isability - GCS, glucose, pupils\n• **E**xposure - Temperature, full examination\n\n**Common emergencies:**\n• MI: Aspirin 300mg, morphine, GTN, consider PCI\n• Sepsis: Fluids, cultures, antibiotics within 1 hour\n• DKA: Fluids, insulin, K+ replacement\n• Anaphylaxis: IM adrenaline 0.5mg, antihistamine, steroid\n\nWhich emergency scenario?`;
+    }
+
+    // Greeting responses
+    if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) {
+        return `Hello Doctor! 👋 I'm your AI medical assistant. I can help you with:\n\n• 💊 Drug dosing and interactions\n• 🩺 Treatment protocols for common conditions\n• ⚠️ Side effects and contraindications\n• 📋 Clinical guidelines\n• 🔬 Diagnostic approaches\n\nWhat would you like to know about?`;
+    }
+
+    if (msg.includes('thank')) {
+        return `You're welcome! Feel free to ask me anything else about medications, treatment protocols, or clinical guidance. I'm here to help! 😊`;
+    }
+
+    // Default response with suggestions
+    return `I can help you with various medical topics! Try asking about:\n\n📋 **Medications:** "Tell me about paracetamol" or "Amoxicillin dosage"\n🩺 **Conditions:** "How to treat hypertension" or "Diabetes management"\n⚠️ **Interactions:** "Warfarin and aspirin interaction"\n💉 **Treatment:** "UTI antibiotics" or "Pain management"\n\nWhat would you like to know about?\n\n💡 *Note: This is a simulated AI. Full capabilities will be available once API integration is complete.*`;
+}
+
+// Main chat function
+function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const messagesDiv = document.getElementById('chatMessages');
+    const userMessage = input.value.trim();
+    
+    if (!userMessage) {
+        alert('Please type a message first!');
+        return;
+    }
+    
+    // Add user message immediately
+    const userMsgDiv = document.createElement('div');
+    userMsgDiv.className = 'message user';
+    userMsgDiv.innerHTML = `<strong>You:</strong> ${userMessage}`;
+    messagesDiv.appendChild(userMsgDiv);
+    
+    // Clear input
+    input.value = '';
+    
+    // Show "typing" indicator
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'message bot';
+    typingDiv.id = 'typing-indicator';
+    typingDiv.innerHTML = `<strong>AI Assistant:</strong> <em>Typing...</em>`;
+    messagesDiv.appendChild(typingDiv);
+    
+    // Scroll to bottom
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    
+    // Simulate AI thinking time (1-2 seconds)
+    const thinkingTime = 1000 + Math.random() * 1000;
+    
+    setTimeout(() => {
+        // Remove typing indicator
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+        
+        // Get simulated AI response
+        const aiResponse = getSimulatedAIResponse(userMessage);
+        
+        // Add AI message with formatting
+        const botMsgDiv = document.createElement('div');
+        botMsgDiv.className = 'message bot';
+        
+        // Convert markdown-style formatting to HTML
+        let formattedResponse = aiResponse
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+            .replace(/\n/g, '<br>'); // Line breaks
+        
+        botMsgDiv.innerHTML = `<strong>AI Assistant:</strong><br>${formattedResponse}`;
+        messagesDiv.appendChild(botMsgDiv);
+        
+        // Scroll to bottom
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }, thinkingTime);
+}
+
+// Allow Enter key to send message
+document.getElementById('chatInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+// Add some welcome suggestions when page loads
+window.addEventListener('load', function() {
+    // Optional: Add quick action buttons
+    const chatContainer = document.querySelector('.chat-container');
+    if (chatContainer) {
+        const quickActions = document.createElement('div');
+        quickActions.style.marginTop = '10px';
+        quickActions.style.display = 'flex';
+        quickActions.style.gap = '10px';
+        quickActions.style.flexWrap = 'wrap';
+        quickActions.innerHTML = `
+            <button onclick="document.getElementById('chatInput').value='Tell me about paracetamol'; sendMessage();" style="padding: 8px 15px; font-size: 13px;">💊 Paracetamol Info</button>
+            <button onclick="document.getElementById('chatInput').value='How to treat hypertension'; sendMessage();" style="padding: 8px 15px; font-size: 13px;">🩺 Hypertension</button>
+            <button onclick="document.getElementById('chatInput').value='Warfarin and aspirin interaction'; sendMessage();" style="padding: 8px 15px; font-size: 13px;">⚠️ Drug Interaction</button>
+            <button onclick="document.getElementById('chatInput').value='UTI antibiotics'; sendMessage();" style="padding: 8px 15px; font-size: 13px;">💉 UTI Treatment</button>
+        `;
+        chatContainer.appendChild(quickActions);
+    }
+});
+
+// Console message for developers
+console.log('🤖 AI Chatbot Loaded - Simulated Mode');
+console.log('📝 This is a simulated AI assistant until API key is integrated');
+console.log('💡 Try asking about medications, conditions, or drug interactions!');
+
+        </script>
+    </body>
+</html>

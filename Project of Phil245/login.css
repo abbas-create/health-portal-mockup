@@ -1,0 +1,71 @@
+
+    body {
+        margin: 0;
+    padding: 0;
+    background-image: url(https://wallpapers.com/images/hd/kuwait-architectural-marvels-kd0x0fghjyoiixg2.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+    
+
+    #icon {
+        margin-left: 0;
+        margin-top: 10px;
+        display: block;
+        margin-right: auto;
+        margin-left: auto; /* centers the icon */
+        width: 80px; /* shrink if needed */
+    }
+
+    .container {
+    backdrop-filter: blur(3px);
+        flex-direction: column; /* stack form and details vertically */
+        width: 30%;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .container #details {
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .container #details p {
+        margin: 10px 0;
+        font-size: 14px;
+    }
+
+    .container #form {
+        width: 88%;
+        padding-left: 7px;
+        margin-left: 15px;
+        text-align: center;
+    }
+
+    .container #form label{
+       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+       color: white;
+    }
+
+    .container #form input {
+        display: block;
+        width: 80%;
+        padding: 7px;
+        margin: 8px auto;
+    }
+
+    .container #form #button {
+        margin-left: 10px auto;
+    }
+
+    .container #form button {
+        width: 20%;
+        padding: 10px;
+        border-radius: 6px;
+    }
+    
+    
+

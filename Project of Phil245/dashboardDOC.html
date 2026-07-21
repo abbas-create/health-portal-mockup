@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dashboard - Doctor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="dashboard.css" rel="stylesheet">
+    </head>
+    <body>
+        <button id="toggleSidebar">☰ Hide</button>
+        <div id="header">
+            <h1> Doctor's PORTAL--MOHE--</h1>
+           <img src="logomoh.jpeg" alt="logo">
+        </div>
+        <div id="mainWrapper">
+        <div id="sidebar">
+            <h2>Menus</h2>
+            <ul>
+               <a href="#appointments"><li>Appointments</li></a>
+                <a href="#percriptions"><li>Percriptions</li></a>
+               <a href="#patients"><li>Patients</li></a>
+                
+            </ul>
+        </div>
+        <div id="container">
+        <div class="info-box">
+        <div id="middle">
+            <h1><i>Welcome, Doctor!</i></h1>
+            <hr>
+            <p><b>Please DO NOT, in any way shape or form, let anyone go to your portal nor giving them acess to your information.</b></p>
+            <br>
+            <p><b>We do not request from you verifiation codes nor do we EVER send SMS(unless its for notifications).</b></p>
+            </div>
+            </div>
+        <hr>
+        <section id="appointments">
+             <div id="box">
+            <h1>Appointments</h1>
+            <hr>
+            <p><b>Here is the Appointments section. Please make sure to add the correct dates and specially the patients names, else that might collide with another patients name causing a mishap.</b></p>
+        </div>
+        <div class="appointments">
+            <h2>New Appointment Form</h2>
+            <form id="appointmentForm">
+                <label for="fullname">Full patient name: </label>
+                <br>
+                <input id="fullname" name="fullname" type="fullname" required>
+                <br>
+                <label for="date">Appointment date:</label>
+                <br>
+                <input id="date" type="date" name="date" required>
+                <br>
+                <label onclick="openReasonBox()">Reason:</label>
+    <select id="reasonSelect">
+        <option>Routine Check-up</option>
+        <option>Diagnosis Review</option>
+        <option>Follow-up Visit</option>
+        <option>Vaccination</option>
+        <option>Other</option>
+    </select>
+    <br>
+    <button type="submit" id="btn"> Submit Appointment</button>
+</form>
+        </div>
+        <h2>Upcoming Appointments</h2>
+        <div id="table-appointments">
+            <table>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Date of Appointment</th>
+                    <th>Reason of Appointment</th>
+                </tr>
+                 <tbody id="appointmentsBody">
+                    <!-- Appointments will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+        </section>
+        <hr>
+        <section id="percriptions">
+            <div class="perscription">
+                <div id="box">
+                <h2>Percriptions</h2>
+                <hr>
+                <p><b>Welcome to the percriptions section. PLEASE make sure to input correct miligrams of medicine and also the actual names with correct inputtng of lower/upper cases.</b></p>
+            </div>
+            <div id="box">
+                <h3>General Prescription Guidelines</h3>
+<p>
+    This section contains basic information and guidelines for writing
+    prescriptions. The purpose of this content is simply to make your
+    page longer so menu scrolling works correctly.
+</p>
+<br>
+<h3>Common Medicines</h3>
+<ul>
+    <li>Paracetamol 500mg – Pain / fever</li>
+    <li>Ibuprofen 200mg – Anti-inflammatory</li>
+    <li>Amoxicillin 500mg – Antibiotic</li>
+    <li>Cetirizine 10mg – Allergy relief</li>
+    <li>Vitamin D – Supplement</li>
+</ul>
+<br>
+<h3>Dosage Examples</h3>
+<p>
+    • 1 tablet every 8 hours<br>
+    • 1 capsule daily after meals<br>
+    • Ointment twice per day<br>
+    • Syrup 10ml every 6 hours<br>
+</p>
+<br>
+<h3>Important Notes</h3>
+<p>
+    - Check patient allergies.<br>
+    - Write medicine names clearly.<br>
+    - Avoid confusing abbreviations.<br>
+    - Ensure dosage & frequency are correct.<br>
+</p>
+<br>
+<p>
+    Prescriptions must be clear and properly documented. Patients should
+    always understand how to use their medication safely.
+</p>
+<p style="margin-bottom:30px;">
+    End of prescriptions section.
+</p>
+            </div>
+            <table id="perscriptionTable">
+    <tr>
+        <th>Medicine</th>
+        <th>Dosage</th>
+        <th>Frequency</th>
+        <th>Duration</th>
+        <th>Delete</th>
+    </tr>
+</table>
+<button id="addBtn" onclick="addRow()">Add Medicine</button>
+<button id="saveBtn" onclick="savePrescription()">Save Prescription</button>
+        </section>
+        <hr>
+        <section id="patients">
+            <div id="box">
+                <h1>Patients</h1>
+                <hr>
+                <p><b>This section allows you to efficiently view, manage, and update all patient records in one place. Whether you are registering a new patient, reviewing existing profiles, or checking submitted information, this page provides a clear, organized overview to support your workflow. Each entry includes essential details such as contact information, medical notes, and visit history, helping you make informed decisions and deliver the best care. Use the tools provided to maintain accurate records and ensure every patient receives timely attention.</b></p>
+            </div>
+        </section>
+        </div>
+        </div>
+        <script>
+function addRow() {
+    const table = document.getElementById("perscriptionTable");
+    const row = table.insertRow();
+
+    row.insertCell(0).innerHTML = `<input name="medicine" type="text" placeholder="Medicine name">`;
+    row.insertCell(1).innerHTML = `<input name="dosage" type="text" placeholder="500mg">`;
+    row.insertCell(2).innerHTML = `<input name="frequency" type="text" placeholder="2x a day">`;
+    row.insertCell(3).innerHTML = `<input name="duration" type="text" placeholder="5 days">`;
+
+    row.insertCell(4).innerHTML =
+        `<button class="deleteBtn" onclick="this.parentElement.parentElement.remove()">X</button>`;
+}
+
+
+function getAllRows() {
+    const rows = document.querySelectorAll("#perscriptionTable tr:not(:first-child)");
+    const data = [];
+
+    rows.forEach(row => {
+        const medicine = row.querySelector("input[name='medicine']").value;
+        const dosage = row.querySelector("input[name='dosage']").value;
+        const frequency = row.querySelector("input[name='frequency']").value;
+        const duration = row.querySelector("input[name='duration']").value;
+
+        data.push({ medicine, dosage, frequency, duration });
+    });
+
+    return data;
+}
+
+
+async function savePrescription() {
+    const data = getAllRows();
+
+    console.log("DATA TO SEND:", data); // shows in browser console
+
+    // Later you replace the URL with the backend URL your teammate gives you
+    const response = await fetch("http://your-backend-url.com/api/prescriptions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+        alert("Perscription saved!");
+    } else {
+        alert("Error saving perscription.");
+    }
+}
+
+
+        // Appointments module variables and functions
+            let appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            const tableBody = document.getElementById('appointmentsBody');
+            const form = document.getElementById('appointmentForm');
+            const errorDiv = document.getElementById('error');
+
+            // Function to render table
+            function renderTable() {
+                tableBody.innerHTML = '';
+                appointments.forEach((appt) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${appt.patient}</td>
+                        <td>${appt.date}</td>
+                        <td>${appt.reason}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+
+            // Add appointment
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const patient = document.getElementById('fullname').value.trim();  // Updated to match your ID
+                const date = document.getElementById('date').value;
+                const reason = document.getElementById('reasonSelect').value;  // Updated to match your ID
+
+                if (!patient || !date || !reason) {
+                    errorDiv.textContent = 'All fields are required.';
+                    return;
+                }
+
+                appointments.push({ patient, date, reason });
+                localStorage.setItem('appointments', JSON.stringify(appointments));
+                renderTable();
+                form.reset();
+                errorDiv.textContent = '';
+            });
+
+            // Initial render
+            renderTable();
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Your existing scripts (sidebar toggle, etc.)
+            const toggleBtn = document.getElementById('toggleSidebar');
+            const sidebar = document.getElementById('sidebar');
+            
+            toggleBtn.addEventListener('click', function() {
+                sidebar.classList.toggle('hidden');
+                
+                // Change button text based on sidebar state
+                if (sidebar.classList.contains('hidden')) {
+                    toggleBtn.textContent = '☰ Show';
+                } else {
+                    toggleBtn.textContent = '☰ Hide';
+                }
+            });
+
+            function openReasonBox() {
+                document.getElementById("reasonBox").style.display = "block";
+            }
+
+            function submitReason() {
+                const reason = document.getElementById("reasonSelect").value;
+                alert("Reason selected: " + reason);
+            }
+
+        </script>
+    </body>
+</html>

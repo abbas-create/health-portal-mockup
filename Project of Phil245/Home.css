@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+   background-image: url(kwt.jpg); 
+   background-size: cover;
+   backdrop-filter: blur(10px);
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+}
+
+.left-side{
+    display: block;
+    text-align: left;
+    padding: 80px;
+    width: 60%;
+}
+.left-side h1{
+    text-align: left;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+
+.left-side P{
+    text-align: left;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+.right-side{
+    text-align: right;
+    width: 22%;
+}
+
+.right-side #navbar{
+    padding:0;
+    list-style: none;
+}
+
+.right-side #navbar ul{
+   display:flex;
+   justify-content: flex-end;
+   gap: 26px;
+   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.right-side #navbar li a{
+    text-decoration: none;
+    color: black;
+}
+
+.right-side #navbar li{
+    list-style: none; /*to remove the bullet points*/
+    padding: 15px;
+}
+
+.right-side #navbar li a:hover{
+    color:blue;
+}
+
+.container{
+    padding:150px
+}
+
+.container h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 90px;
+}
+
+.introduction h2 {
+    text-align: center;
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.introduction p{
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 50px;
+}
+
+.boxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem; /* Space between boxes */
+    padding: 0 5%;
+    margin-top: 5%;
+    flex-wrap: wrap; /* Boxes stack on small screens */
+}
+
+.boxes > div {
+    flex: 1;
+    min-width: 250px; /* Minimum width before wrapping */
+    padding: 1.5rem;
+}
+
+.boxes p {
+    margin-bottom: 2pc;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 900;
+}
+
+.boxes button {
+    margin-top: 2pc;
+    width: 60%; /* Consistent width */
+    padding: 0.75rem 1rem; /* Use padding instead of fixed height */
+    font-family: 'Gill Sans';
+}
+
+h2{
+    text-align: center;
+    color: blue;
+}
+
+@media only screen and (max-width: 900px) {
+    body{
+        background-color: black;
+        color: white;
+    }
+    button{
+        width: 150px; /* Fixed width */
+  height: 50px; /* Fixed height */
+  font-size: 16px; /* Optional: Ensure text size remains consistent */
+  box-sizing: border-box; /* Ensures padding and border don't affect size */
+    }
+}

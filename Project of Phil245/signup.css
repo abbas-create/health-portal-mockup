@@ -1,0 +1,210 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url(https://wallpapers.com/images/hd/kuwait-architectural-marvels-kd0x0fghjyoiixg2.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+img{
+    margin-left: 50%;
+    margin-top: 3%;
+}
+
+
+#Main-header, #sec-header{
+    text-align: center;
+    text-transform: capitalize;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 800 ;
+    color: burlywood;
+    margin-left: 7%;
+}
+
+.Q1-box{
+    position: relative;   /* keeps it in normal flow */
+  z-index: 1;           /* makes sure it’s clickable */
+  padding: 15px;
+    width: 22pc;
+    margin-left: 40%;
+    padding: 1pc;
+    backdrop-filter: blur(3pc);
+    height: 31pc;
+    margin-top: 4%;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.Q1-box #h3-1{
+    font-size: 230%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: aliceblue;
+    text-align: center;
+}
+
+.Q1-box label {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 800;
+    font-size: 20px;
+    display: block;        /* ensures label sits above input */
+}
+
+.Q1-box input {
+    display: block;
+    width: 80%;           /* makes input nicely sized */
+    margin: 10px auto;    /* centers inputs inside box */
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+
+.Q2-box{
+    width: 20pc;
+    margin-left: 40%;
+    padding: 2pc;
+    backdrop-filter: blur(3pc);
+    height: 7pc;
+    margin-top: 4%;
+    border-radius: 30px;
+    text-align: center;
+}
+
+
+.Q2-box #h3-2{
+    font-size: 140%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: aliceblue;
+    text-align: center;
+}
+
+.Q2-box input{
+    font-size: 110%;
+}
+
+.Q3-box{
+    width: 20pc;
+    margin-left: 40%;
+    padding: 2pc;
+    backdrop-filter: blur(3pc);
+    height: 7pc;
+    margin-top: 4%;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.Q3-box #h3-3{
+font-size: 140%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: aliceblue;
+    text-align: center;
+}
+
+.Q3-box input{
+    font-size: 110%;
+}
+
+.Q4-box{
+    width: 20pc;
+    margin-left: 40%;
+    padding: 2pc;
+    backdrop-filter: blur(3pc);
+    height: 7pc;
+    margin-top: 4%;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.Q4-box label {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 800;
+    font-size: 20px;
+    display: block;        /* ensures label sits above input */
+}
+
+
+.terms-and-conditions{
+    width: 20pc;
+    margin-left: 40%;
+    padding: 2pc;
+    backdrop-filter: blur(3pc);
+    height: 16pc;
+    margin-top: 4%;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.terms-and-conditions #h3-4{
+    font-size: 140%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: aliceblue;
+    text-align: center;
+}
+
+.terms-and-conditions p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: bisque;
+}
+
+.terms-and-conditions label{
+    color: aliceblue;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#Role{
+    width: 20pc;
+    margin-left: 40%;
+    padding: 2pc;
+    backdrop-filter: blur(3pc);
+    height: 8pc;
+    margin-top: 4%;
+    border-radius: 30px;
+    text-align: center;
+}
+
+#Role{
+    width: 20pc;
+    margin-left: 40%;
+    padding: 2pc;
+    backdrop-filter: blur(3pc);
+    height: 8pc;
+    margin-top: 4%;
+    border-radius: 30px;
+    text-align: center;
+}
+
+
+#Role #h3-4{
+    font-size: 140%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: aliceblue;
+    text-align: center;
+}
+
+#Role label{
+    color: aliceblue;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.button-box{
+    margin: 10pc;
+    padding-left: 34%;
+}
+
+button{
+    height:3pc;
+    width: 30%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    margin-left: 10%  ;
+}
+
+button:hover{
+    background-color: bisque;
+    animation: backwards;
+    animation-timing-function: ease-in ;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}
