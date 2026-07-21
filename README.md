@@ -8,4 +8,7 @@ There are two portals:
 
 doctor: conisists the basic needs a doctor needs to have to schecule appointments, prescibe medicine to each patients and other things.
 patient: fully limited and has all the needs a patient needs to have.
-Keep in mind: this project was originally made for the course PHIL245 to highlight ethical issues in health-based portals and have not formally added in databases
+
+
+
+*Keep in mind: this project was originally made for the course PHIL245 to highlight ethical issues in health-based portals and have not formally added in databases*
